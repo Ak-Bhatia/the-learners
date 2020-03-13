@@ -1,0 +1,72 @@
+<%- include ('partials/header') %>
+
+    <div class="container py-4 bg-light rounded">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">This feature will be out in coming updates.</p>
+              <a href="#" class="btn btn-primary disabled">Request Live Video</a>
+            </div>
+          </div>
+        </div>
+        <% users.forEach(function(user){ %>
+
+        <div class="col-md-8 performance">
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col"><%= user.username %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Class</th>
+                <td><%= user.class %></td>
+              </tr>
+              <tr>
+                <th scope="row">School</th>
+                <td><%= user.school %></td>
+              </tr>
+              <tr>
+                <th scope="row">Mobile No.</th>
+                <td><%= user.mobile %></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="container-fluid py-2 bg-white">
+    <h1>Tests</h1>
+  </div>
+
+  <div class="jumbotron">
+    <table class="table table-striped table-hover table-bordered table-responsive-md">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Subject</th>
+      <th scope="col">Chapter</th>
+      <th scope="col">Total Marks</th>
+      <th scope="col">Marks Obtained</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% tests.forEach(function(test){ %>
+    <tr>
+      <th scope="row"><a href="/tests/<%= test._id %>/edit"><%= test.subject %></th>
+      <td><%= test.chapter %></td>
+      <td><%= test.maxim_marks %></td>
+      <td><%= test.obtained_marks %></td>
+      <td><%= test.date.toDateString()%></td>
+    </tr>
+ <% }) %>
+  </tbody>
+  </table>
+  </div>
+
+<%- include ('partials/footer') %>

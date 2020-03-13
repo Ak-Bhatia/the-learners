@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/style1.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background:#000;">
+  <a class="navbar-brand" href="#"><h2><b><i>The Learners</i></b></h2></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <% if(currentUser && !currentUser.isadmin){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/student/<%= currentUser.username %>">Profile</a>
+      </li>
+      <% } else if(currentUser && currentUser.isadmin){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/students">Students</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tests">Tests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tests/new">Add new Test</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register new Student</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/loginrecord">Login Record</a>
+      </li>
+      <% } %>
+      <% if(!currentUser){ %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <% } else { %>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">You are Signed in as: <%= currentUser.username %></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+      <% } %>
+    </ul>
+    <% if(!currentUser){ %>
+      <form action="/login" method="POST" class="form-inline">
+      <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+      <div class="input-group mr-sm-2 my-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername2" required name="username" placeholder="Name">
+      </div>
+      <input type="password" class="form-control mr-sm-2 my-2" id="inlineFormInputName2" name="password" required placeholder="Password">
+      <button type="submit" class="btn btn-info">Login</button>
+      </form>
+      <% } %>
+  </div>
+</nav>
+<hr>
+
+<div class="container mt-2">
+  <% if(error && error.length > 0){ %>
+  <div class="alert alert-danger" role="alert">
+    <%= error %>
+  </div>
+  <% } %>
+  <% if(success && success.length > 0){ %>
+  <div class="alert alert-success" role="alert">
+    <%= success %>
+  </div>
+    <% } %>
+
+</div>

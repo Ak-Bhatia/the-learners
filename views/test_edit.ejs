@@ -1,0 +1,43 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+  <div class="container-fluid py-2 bg-white">
+    <h1>Edit Test</h1>
+  </div>
+
+ <div class="jumbotron">
+ <form action="/tests/<%= test._id %>?_method=PUT" method="POST">
+  <div class="form-group">
+    <label for="exampleInputStudent">Student</label>
+    <input type="text" name="test[student]" disabled class="form-control" placeholder="Enter Student Name" value="<%= test.student %>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputSubject">Subject</label>
+    <input type="text" name="test[subject]" disabled class="form-control" placeholder="Enter Subject" value="<%= test.subject %>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputChapter">Chapter</label>
+    <input type="text" name="test[chapter]" required class="form-control" placeholder="Enter Chapter" value="<%= test.chapter %>">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputMaximumMarks">Maximum Marks</label>
+    <input type="number" name="test[maxim_marks]" required value="<%= test.maxim_marks %>" class="form-control" placeholder="Maximum Marks">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputObtainedMarks">Obtained Marks</label>
+    <input type="number" name="test[obtained_marks]" required value="<%= test.obtained_marks %>" class="form-control" placeholder="Obtained Marks">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputDate">Date</label>
+    <input type="date" name="test[date]" disabled class="form-control" placeholder="Date">
+  </div>
+  <button type="submit" class="btn btn-primary">Edit Test</button>
+</form>
+
+  <form action="/tests/<%= test._id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+  </form>
+</div>
+
+</div>
+<%- include ('partials/footer') %>

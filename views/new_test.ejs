@@ -1,0 +1,41 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+
+<div class="container-fluid py-2 bg-white">
+  <h1>Add Test</h1>
+</div>
+
+<div class="jumbotron">
+<form action = "/tests" method = "POST">
+  <div class="form-group">
+    <label for="exampleInputSubject">Subject</label>
+    <input type="text" name="test[subject]" required class="form-control" placeholder="Enter Subject">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputStudent">Student</label>
+    <input type="text" name="test[student]" required class="form-control" placeholder="Enter Student name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputChapter">Chapter</label>
+    <input type="text" name="test[chapter]" required class="form-control" placeholder="Enter Chapter">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputMaximumMarks">Maximum Marks</label>
+    <input type="number" name="test[maxim_marks]" class="form-control" placeholder="Maximum Marks">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputObtainedMarks">Obtained Marks</label>
+    <input type="number" name="test[obtained_marks]" class="form-control" placeholder="Obtained Marks">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputDate">Date</label>
+    <input type="date" name="test[date]" required class="form-control" placeholder="Date">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Test</button>
+</form>
+</div>
+
+</div>
+
+<%- include ('partials/footer') %>

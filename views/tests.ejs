@@ -1,0 +1,63 @@
+<%- include ('partials/header') %>
+  
+  <div class="container-fluid py-2 bg-white">
+    <h1>Tests</h1>
+  </div>
+
+  <div class="jumbotron">
+    <table class="table table-striped table-hover table-bordered table-responsive-md">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Chapter</th>
+      <th scope="col">Total Marks</th>
+      <th scope="col">Marks Obtained</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% tests.forEach(function(test){ %>
+    <tr>
+      <th scope="row"><a href="/student/<%= test.student %>"><%= test.student.toUpperCase() %></th>
+      <th scope="row"><a href="/tests/<%= test._id %>/edit"><%= test.subject %></th>
+      <td><%= test.chapter %></td>
+      <td><%= test.maxim_marks %></td>
+      <td><%= test.obtained_marks %></td>
+      <td><%= test.date.toDateString()%></td>
+    </tr>
+ <% }) %>
+  </tbody>
+  </table>
+  </div>
+
+<div class="container">
+ <form action="/tests" method="POST">
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" required placeholder="Student" name="test[student]">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" required placeholder="Subject" name="test[subject]">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" required placeholder="Chapter" name="test[chapter]">
+    </div>
+    </div>
+    <div class="row my-4">
+    <div class="col">
+      <input type="number" class="form-control" placeholder="Total Marks" name="test[maxim_marks]">
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" placeholder="Obtained marks" name="test[obtained_marks]">
+    </div>
+    <div class="col">
+      <input type="date" class="form-control" required placeholder="Date" name="test[date]">
+    </div>
+  </div>
+    <button type="submit" class="btn btn-primary">Add Test</button>
+
+</form>
+</div>
+
+<%- include ('partials/footer') %>

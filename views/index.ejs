@@ -1,0 +1,17 @@
+<%- include ('partials/header') %>
+
+<div style="height:100vh; position:absolute; top:0; width:100%;background:url(assets/download.jpg); background-size:cover; background-repeat:no-repeat; ">
+
+<div style="height:100vh; position:absolute; top:0; width:100%; background:rgba(0,0,0,0.8);">
+
+<% if(!currentUser){ %>
+	<a href="/login" class="btn btn-warning btn-lg" style="position:fixed; top:50%; left: 45%;">Login</a>
+<% } else{ %>
+	<a href="/student/<%= currentUser.username %>" class="btn btn-warning" style="position:fixed; top:50%; left: 45%;">Visit Profile</a>
+<% } %>
+
+</div>
+
+</div>
+
+<%- include ('partials/footer') %>

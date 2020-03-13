@@ -1,0 +1,26 @@
+<%- include ('partials/header') %>
+
+  <div class="container-fluid py-2 bg-white">
+    <h1>Login Record</h1>
+  </div>
+
+  <div class="jumbotron">
+    <table class="table table-striped table-hover table-bordered table-responsive-md">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">Login Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% loginRecords.forEach(function(loginRecord){ %>
+    <tr>
+      <th scope="row"><a href="/student/<%= loginRecord.username %>"><%= loginRecord.username.toUpperCase() %></th>
+      <td><%= loginRecord.logintime %></td>
+    </tr>
+ <% }) %>
+  </tbody>
+  </table>
+  </div>
+
+<%- include ('partials/footer') %>
